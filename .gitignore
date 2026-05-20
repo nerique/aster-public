@@ -1,0 +1,7 @@
+# Local credentials — never commit. Source lives at ~/.aster-deploy.env
+.aster-deploy.env
+.env
+.env.local
+
+# macOS noise
+.DS_Store
