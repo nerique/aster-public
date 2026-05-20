@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accessibility — Aster Disk</title>
+    <meta name="description" content="Aster Disk is built to be navigated with VoiceOver, Voice Control, and the keyboard alone. Every macOS accessibility preference is respected.">
+    <meta name="theme-color" content="#a24859" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a1916" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="canonical" href="https://www.asterdisk.com/accessibility">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+    <a class="brand" href="/" aria-label="Aster Disk home">
+        <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2.5c1.1 3.2 3.6 5.7 6.8 6.8-3.2 1.1-5.7 3.6-6.8 6.8-1.1-3.2-3.6-5.7-6.8-6.8C8.4 8.2 10.9 5.7 12 2.5z" fill="currentColor"/>
+            <circle cx="12" cy="18.5" r="1.6" fill="currentColor"/>
+        </svg>
+        Aster Disk
+    </a>
+    <nav class="top" aria-label="Primary">
+        <a href="/accessibility" aria-current="page">Accessibility</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/support">Support</a>
+    </nav>
+</header>
+
+<main id="main">
+    <h1>Accessibility statement</h1>
+    <p class="lead">
+        Aster Disk is designed for showcase-grade accessibility, not
+        just compliance. Every common task — scan a drive, browse what
+        it found, unlock Pro, review suggestions, see what trophies
+        you've earned — can be completed with VoiceOver, Voice
+        Control, or the keyboard alone.
+    </p>
+
+    <h2>VoiceOver</h2>
+    <p>
+        Every interactive control has a label. The four visualisations
+        — treemap, sunburst, bubble pack, horizontal bars — are
+        <em>layouts</em> of the same data. For VoiceOver users, for
+        whom layout carries no signal, they collapse to a single
+        ordered list of folders by size, each with named actions for
+        Open and Add to selection. The chart canvas itself is hidden
+        from accessibility so it's never read as "image."
+    </p>
+    <p>
+        File-browser rows read as a single coherent sentence, e.g.
+        <em>"Library, 32.1 GB, 31.7% of folder, directory. Double-tap to
+        open. Press the plus button to add to selection."</em>
+        Percentages are rendered through a locale-aware number
+        formatter, so French VoiceOver hears "31,7 %", not "31.7%."
+    </p>
+    <p>
+        Trophy badges read as <em>"Snack, unlocked. Reclaimed 100 MB
+        lifetime."</em> Locked trophies still read so VoiceOver users
+        can discover what's possible.
+    </p>
+
+    <h2>Voice Control</h2>
+    <p>
+        Every named control responds to its visible label. Say
+        <em>"click Scan Whole Disk"</em>, <em>"click Unlock"</em>,
+        <em>"open Settings"</em>. Sidebar destinations, Settings tabs,
+        Suggestion-card actions, paywall buttons, and Home action
+        cards all carry stable identifiers so Voice Control can target
+        them by name.
+    </p>
+
+    <h2>Keyboard</h2>
+    <p>
+        Tab cycles through interactive controls in visual order.
+        ⌘O picks a folder, Return runs Scan Whole Disk from Home,
+        Space previews the focused file via Quick Look, Esc stops a
+        scan in progress.
+    </p>
+
+    <h2>System preferences respected</h2>
+    <ul>
+        <li><strong>Reduce Motion</strong> — onboarding petal pulse, Victory bloom rings, and chart drill-down animations skip to their final state.</li>
+        <li><strong>Reduce Transparency</strong> — vibrant surfaces (FDA banner, brand-bg cards) fall back to opaque brand colour.</li>
+        <li><strong>Increased Contrast</strong> — hairline borders deepen, ink-2 / ink-3 distinction widens, safety-tinted card outlines thicken.</li>
+        <li><strong>Dynamic Type</strong> — text sizes in the sidebar, action cards, paywall, and suggestions panel scale with your preferred reading size.</li>
+        <li><strong>Differentiate Without Color</strong> — safety semantics ship icon + label, not just colour. Trophy locked/unlocked reads as text.</li>
+        <li><strong>Dark Mode</strong> — every theme token resolves per <code>colorScheme</code>.</li>
+    </ul>
+    <p>
+        These are reflected live in Aster Disk's own
+        Settings → Accessibility tab, so users can see at a glance
+        what the app is doing for them right now.
+    </p>
+
+    <h2>What's not there yet</h2>
+    <p>
+        Honesty about what we haven't shipped is part of an
+        accessibility statement. Open items at the time of writing:
+    </p>
+    <ul>
+        <li>A full Dynamic Type sweep across the ~80 fixed font sizes is in progress; macOS's text-scaling story is less granular than iOS's, so per-app preferred reading size still maps to a subset of the design tokens.</li>
+        <li>Captions and audio descriptions don't apply — Aster Disk has no media content.</li>
+        <li>VoiceOver copy polish (Markdown asterisks in rare body strings, decimal separators in non-English locales) was audited in May 2026; future regressions are checked by the screenshot capture pipeline.</li>
+    </ul>
+
+    <h2>Feedback</h2>
+    <p>
+        If something doesn't work, or works less well than it should,
+        please tell me. The fastest path is to
+        <a href="https://github.com/nerique/aster-public/issues">open an issue on GitHub</a>;
+        for private feedback, email
+        <a href="mailto:accessibility@asterdisk.com">accessibility@asterdisk.com</a>.
+        Accessibility regressions are treated as bugs, not "nice-to-fix-later."
+    </p>
+</main>
+
+<footer class="site">
+    <span>© 2026 Julien Balmont. Aster Disk is a personal project.</span>
+    <span>
+        <a href="/privacy">Privacy</a> ·
+        <a href="/support">Support</a> ·
+        <a href="/accessibility">Accessibility</a> ·
+        <a href="https://github.com/nerique/aster-public">GitHub</a>
+    </span>
+</footer>
+</body>
+</html>

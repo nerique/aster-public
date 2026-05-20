@@ -64,6 +64,6 @@ If we ever change Aster Disk's data handling — for example, if a future versio
 
 Bug reports + feature requests: [open an issue](https://github.com/nerique/aster-public/issues).
 
-Email: `support@aster.app` (configured before App Store launch).
+Email: `privacy@asterdisk.com`.
 
 — Julien Balmont, Aster Disk maintainer

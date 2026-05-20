@@ -29,8 +29,10 @@ macOS 12 Monterey or later. Universal binary (Apple Silicon + Intel).
 
 ## Support
 
-Found a bug or have a feature request? [Open an issue](https://github.com/nerique/aster-public/issues). For private support, email `support@aster.app` (configured before App Store launch).
+Website: [www.asterdisk.com](https://www.asterdisk.com)
+
+Found a bug or have a feature request? [Open an issue](https://github.com/nerique/aster-public/issues). For private support, email `support@asterdisk.com`.
 
 ---
 
-The source code of Aster Disk lives in a separate private repository. This public repo hosts the README + privacy policy referenced from the Mac App Store listing.
+The source code of Aster Disk lives in a separate private repository. This public repo hosts the website (`www.asterdisk.com`), the README, and the privacy policy referenced from the Mac App Store listing.
