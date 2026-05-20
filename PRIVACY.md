@@ -66,4 +66,4 @@ Bug reports + feature requests: [open an issue](https://github.com/nerique/aster
 
 Email: `privacy@asterdisk.com`.
 
-— Julien Balmont, Aster Disk maintainer
+— The Aster Disk team

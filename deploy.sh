@@ -75,30 +75,27 @@ if [ "${DRY_RUN:-0}" = "1" ]; then
     exit 0
 fi
 
-# Generate the SFTP command script. cd into the web root, then
-# `put` each file. -P forces overwrite (the default in OpenSSH 9+
-# but explicit is safer).
-SFTP_BATCH=$(mktemp -t aster-deploy-XXXX)
-trap 'rm -f "$SFTP_BATCH"' EXIT
-{
-    echo "cd $ASTER_SFTP_DIR"
-    for f in "${FILES[@]}"; do
-        echo "put $f"
-    done
-    echo "ls -la"
-    echo "bye"
-} > "$SFTP_BATCH"
+# Use expect to drive the interactive sftp session — `-b batchfile`
+# disables password auth (assumes keys), so we feed commands at the
+# `sftp>` prompt instead. Builds the put-list dynamically from FILES.
+PUT_COMMANDS=""
+for f in "${FILES[@]}"; do
+    PUT_COMMANDS+="send \"put $f\\r\"\nexpect \"sftp>\"\n"
+done
 
-# Use expect to feed the password — OpenSSH's sftp has no password
-# flag by design. Keep speech minimal so the log stays readable.
 expect <<EXPECT_EOF
     set timeout 90
     log_user 1
-    spawn sftp -o StrictHostKeyChecking=accept-new -P $ASTER_SFTP_PORT -b $SFTP_BATCH $ASTER_SFTP_USER@$ASTER_SFTP_HOST
+    spawn sftp -o StrictHostKeyChecking=accept-new -P $ASTER_SFTP_PORT $ASTER_SFTP_USER@$ASTER_SFTP_HOST
     expect {
         -re "password:" { send "$ASTER_SFTP_PASS\r" }
         timeout { puts "❌ sftp timed out before password prompt"; exit 2 }
     }
+    expect "sftp>"
+    send "cd $ASTER_SFTP_DIR\r"
+    expect "sftp>"
+$(printf "$PUT_COMMANDS")
+    send "bye\r"
     expect eof
     catch wait result
     set exit_status [lindex \$result 3]
